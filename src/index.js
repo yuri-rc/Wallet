@@ -5,12 +5,14 @@ import { Provider } from 'react-redux';
 import App from './App';
 import store from './redux/store';
 import './index.css';
+import GlobalStyle from './style/globalStyle';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     <Provider store={ store }>
       <App />
+      <GlobalStyle />
     </Provider>
   </BrowserRouter>,
 );
