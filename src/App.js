@@ -1,13 +1,18 @@
-/* eslint-disable react/prop-types */
-import React, { Component } from 'react';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
+import Login from './pages/Login';
 
-class App extends Component {
-  render() {
-    return (
-      <h1>Wallett</h1>
-    );
-  }
+export default function App() {
+  const renderRoutes = () => (
+    <Routes>
+      <Route path="/" element={<Login />} />
+    </Routes>
+  );
+
+  return (
+    <>
+      {renderRoutes()}
+    </>
+  );
 }
-
-export default App;

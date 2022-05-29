@@ -22,6 +22,7 @@
         "import/no-unresolved": "off",
         "default-param-last": "off",
         "no-console": "off",
+        // "class-methods-use-this": "off",
         "react/jsx-filename-extension": "off"
     }
 }
