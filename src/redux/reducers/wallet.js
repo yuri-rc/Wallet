@@ -1,18 +1,17 @@
 import {
-  CODE_SELECTIORS,
+  ADD_CURRENCIES,
   ADD_EXPENSE,
   REMOVE_ITEM,
 } from '../actions';
 
 const INITIAL_STATE = {
-  currencies: [],
+  currencies: {},
   expenses: [],
-  editing: [],
 };
 
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case CODE_SELECTIORS:
+    case ADD_CURRENCIES:
       return {
         ...state,
         currencies: action.payload,
