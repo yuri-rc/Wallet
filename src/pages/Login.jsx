@@ -31,8 +31,8 @@ function Login(props) {
     setFields({ ...fields, [name]: value });
   };
 
-  const onSubmit = (e) => {
-    e.preventDefault();
+  const onSubmit = (event) => {
+    event.preventDefault();
     if ((warning.name || warning.pass) === false) redirect();
   };
 
