@@ -13,8 +13,14 @@ function Login(props) {
   const [fields, setFields] = useState({ name: '', pass: '' });
   const [warning, setWarning] = useState({ name: true, pass: true });
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    setWarning({
+      name: fields.name === '',
+      pass: fields.pass === '',
+    });
+  }, [fields.name === '', fields.pass === '']);
 
+  const navigate = useNavigate();
   const redirect = () => {
     const { dispatch } = props;
     dispatch(addUser(fields.name));
@@ -25,16 +31,9 @@ function Login(props) {
     setFields({ ...fields, [name]: value });
   };
 
-  useEffect(() => {
-    setWarning({
-      name: fields.name === '',
-      pass: fields.pass === '',
-    });
-  }, [fields.name === '', fields.pass === '']);
-
   const onSubmit = (e) => {
     e.preventDefault();
-    redirect();
+    if ((warning.name || warning.pass) === false) redirect();
   };
 
   return (
