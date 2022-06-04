@@ -1,9 +1,13 @@
 import React from 'react';
-import WalletHeader from '../components/WalletPage/WalletHeader';
+import WalletHeader from '../components/WalletPage/Header';
+import WalletMain from '../components/WalletPage/Main';
 
 function Wallet() {
   return (
-    <WalletHeader />
+    <>
+      <WalletHeader />
+      <WalletMain />
+    </>
   );
 }
 

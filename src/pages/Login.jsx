@@ -28,7 +28,7 @@ function Login(props) {
   };
 
   const onChange = ({ target: { name, value } }) => {
-    setFields({ ...fields, [name]: value });
+    setFields((prev) => ({ ...prev, [name]: value }));
   };
 
   const onSubmit = (event) => {
