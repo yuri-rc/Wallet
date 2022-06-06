@@ -7,11 +7,7 @@ import {
 
 const INITIAL_STATE = {
   currencies: [],
-  expenses: [
-    { value: 13.30, description: 'Supermercado' },
-    { value: 20.50, description: 'Supermercado' },
-    { value: 100.45, description: 'Supermercado' },
-  ],
+  expenses: [],
   quickAccess: [],
 };
 

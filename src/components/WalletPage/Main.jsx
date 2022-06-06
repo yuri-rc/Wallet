@@ -2,15 +2,23 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
-import { fetchAPI, quickAccessFunction } from '../../redux/actions';
+import { addCurrencies, quickAccessFunction } from '../../redux/actions';
 import CurrenciesButton from './CurrenciesButton';
+import fetchAPI from '../../services/fetchAPI';
+import images from '../../images';
 
 function Main({
-  currencies, quickAccess, expenses, dispatch,
+  currencies, quickAccess, expenses, dispatch, name,
 }) {
+  const navigate = useNavigate();
+
   useEffect(() => {
+    if (name === '') navigate('/');
+
     const fetchData = async () => {
-      await dispatch(fetchAPI());
+      dispatch(addCurrencies(Object.keys(fetchAPI()).filter(
+        (currency) => currency !== 'USDT',
+      )));
     };
     fetchData();
   }, []);
@@ -21,8 +29,6 @@ function Main({
     if (quickAccessCopy.length > 5) quickAccessCopy.pop();
     dispatch(quickAccessFunction(quickAccessCopy));
   };
-
-  const navigate = useNavigate();
 
   const onClick = ({ target: { alt } }) => {
     createQuickAccess(alt);
@@ -45,10 +51,11 @@ function Main({
       <hr />
       <p>Despesas:</p>
       <div>
-        {expenses.map(({ value, description }, index) => (
+        {expenses.map(({ value, description, currency }, index) => (
           <div key={index}>
-            <p>{value}</p>
+            <p>{`R$ ${Number(value).toFixed(2)}`}</p>
             <p>{description}</p>
+            <img style={{ maxWidth: '35px' }} src={images[currency]} alt="currency" />
           </div>
         ))}
       </div>
@@ -61,12 +68,14 @@ Main.propTypes = {
   currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
   quickAccess: PropTypes.arrayOf(PropTypes.string).isRequired,
   expenses: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   currencies: state.wallet.currencies,
   quickAccess: state.wallet.quickAccess,
   expenses: state.wallet.expenses,
+  name: state.user.name,
 });
 
 export default connect(mapStateToProps)(Main);
