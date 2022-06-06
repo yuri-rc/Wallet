@@ -12,10 +12,10 @@ export const addExpense = (payload) => ({
   payload,
 });
 
-export const CODE_SELECTIORS = 'CODE_SELECTIORS';
+export const ADD_CURRENCIES = 'ADD_CURRENCIES';
 
-export const requestCodeSelectiors = (payload) => ({
-  type: CODE_SELECTIORS,
+export const addCurrencies = (payload) => ({
+  type: ADD_CURRENCIES,
   payload,
 });
 
@@ -25,3 +25,19 @@ export const removeItem = (payload) => ({
   type: REMOVE_ITEM,
   payload,
 });
+export const QUICK_ACCESS = 'QUICK_ACCESS';
+
+export const quickAccessFunction = (payload) => ({
+  type: QUICK_ACCESS,
+  payload,
+});
+
+export const fetchAPI = () => async (dispatch) => {
+  const URL = 'https://economia.awesomeapi.com.br/json/all';
+  const request = await fetch(URL);
+  const requestJson = await request.json();
+  dispatch(addCurrencies(Object.keys(requestJson).filter(
+    (currency) => currency !== 'USDT',
+  )));
+  return requestJson;
+};

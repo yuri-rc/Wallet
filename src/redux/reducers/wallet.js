@@ -1,18 +1,19 @@
 import {
-  CODE_SELECTIORS,
+  ADD_CURRENCIES,
   ADD_EXPENSE,
   REMOVE_ITEM,
+  QUICK_ACCESS,
 } from '../actions';
 
 const INITIAL_STATE = {
   currencies: [],
   expenses: [],
-  editing: [],
+  quickAccess: [],
 };
 
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case CODE_SELECTIORS:
+    case ADD_CURRENCIES:
       return {
         ...state,
         currencies: action.payload,
@@ -21,6 +22,11 @@ const reducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         expenses: [...state.expenses, action.payload],
+      };
+    case QUICK_ACCESS:
+      return {
+        ...state,
+        quickAccess: action.payload,
       };
     case REMOVE_ITEM:
       return {
