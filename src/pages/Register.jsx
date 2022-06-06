@@ -22,8 +22,7 @@ function Register({ dispatch, expenses }) {
 
   useEffect(() => {
     const { value, description } = fields;
-    console.log((value.length, description.length));
-    if ((value.length !== 0 && description.length !== 0)) setIsDisabled(false);
+    setIsDisabled(!((value.length && description.length) !== 0));
   }, [fields]);
 
   const handleOnChange = ({ target: { name, value } }) => {
