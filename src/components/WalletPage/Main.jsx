@@ -45,25 +45,28 @@ function Main({
         onClick={onClick}
         array={currencies}
       />
-      <HrElement />
-      <MainParagraph>Acesso rápido:</MainParagraph>
-      <CurrenciesButton
-        onClick={onClick}
-        array={quickAccess}
-      />
-      <HrElement />
-      <MainParagraph>Despesas:</MainParagraph>
-      <div>
-        {expenses.map(({ value, description, currency }, index) => (
-          <ExpenseDiv key={index}>
-            <div>
-              <ExpenseValue>{`R$ ${Number(value).toFixed(2)}`}</ExpenseValue>
-              <p>{description}</p>
-            </div>
-            <img style={{ maxWidth: '35px' }} src={images[currency]} alt="currency" />
-          </ExpenseDiv>
-        ))}
-      </div>
+      { quickAccess.length !== 0 && (
+        <>
+          <HrElement />
+          <MainParagraph>Acesso rápido:</MainParagraph>
+          <CurrenciesButton
+            onClick={onClick}
+            array={quickAccess}
+          />
+          <HrElement />
+          <MainParagraph>Despesas:</MainParagraph>
+          {expenses.map(({ value, description, currency }, index) => (
+            <ExpenseDiv key={index}>
+              <div>
+                <ExpenseValue>{`R$ ${Number(value).toFixed(2)}`}</ExpenseValue>
+                <p>{description}</p>
+              </div>
+              <img style={{ maxWidth: '35px' }} src={images[currency]} alt="currency" />
+            </ExpenseDiv>
+          ))}
+        </>
+      ) }
+
     </div>
   );
 }

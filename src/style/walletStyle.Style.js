@@ -85,7 +85,7 @@ export const ExpenseDiv = styled.div`
   justify-content: space-between;
   padding: 12px 16px;
   background: #272A3E;
-  border: solid #2C2C2C 2px;
+  border: solid #1E1E1E 2px;
   border-radius: 12px;
   margin-bottom: 16px;
 `;
