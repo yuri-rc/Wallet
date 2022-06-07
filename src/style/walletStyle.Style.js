@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export const MainDiv = styled.div`
   padding: 32px 24px;
+  max-width: 450px;
+  margin: auto;
 `;
 
 export const WelcomeBack = styled.p`
@@ -28,7 +30,7 @@ export const AmoutSpent = styled.div`
   flex-direction: column;
   justify-content: center;
   gap: 16px;
-  margin: 32px 0;
+  margin: 32px auto;
 
   h2 {
     margin-left: 40px;
@@ -49,7 +51,7 @@ export const AmoutSpent = styled.div`
 `;
 
 export const HrElement = styled.hr`
-  width: 312px;
+  width: 100%;
   height: 0px;
   left: 24px;
   top: 299px;
