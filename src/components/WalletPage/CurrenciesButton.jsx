@@ -1,14 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import images from '../../images';
+import {
+  WelcomeBack, UserNmae, AmoutSpent, HrElement, MainParagraph, CurrenciesDiv, CurrencysDiv,
+} from '../../style/walletStyle.Style';
 
 function CurrenciesButton({
   onClick, array,
 }) {
   return (
-    <div style={{ display: 'flex', overflow: 'auto' }}>
+    <CurrenciesDiv>
       { array.map((currency) => (
-        <div key={currency}>
+        <CurrencysDiv key={currency}>
           <button
             style={{ backgroundColor: 'transparent', border: 'none' }}
             type="button"
@@ -17,9 +20,9 @@ function CurrenciesButton({
             <img src={images[currency]} alt={currency} />
           </button>
           <p>{currency}</p>
-        </div>
+        </CurrencysDiv>
       )) }
-    </div>
+    </CurrenciesDiv>
   );
 }
 

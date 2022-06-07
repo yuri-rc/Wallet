@@ -6,6 +6,9 @@ import { addCurrencies, quickAccessFunction } from '../../redux/actions';
 import CurrenciesButton from './CurrenciesButton';
 import fetchAPI from '../../services/fetchAPI';
 import images from '../../images';
+import {
+  HrElement, MainParagraph, ExpenseDiv, ExpenseValue,
+} from '../../style/walletStyle.Style';
 
 function Main({
   currencies, quickAccess, expenses, dispatch, name,
@@ -37,26 +40,28 @@ function Main({
 
   return (
     <div>
-      <p>Adicionar nova despesa:</p>
+      <MainParagraph>Selecione uma nova despesa:</MainParagraph>
       <CurrenciesButton
         onClick={onClick}
         array={currencies}
       />
-      <hr />
-      <p>Acesso rápido:</p>
+      <HrElement />
+      <MainParagraph>Acesso rápido:</MainParagraph>
       <CurrenciesButton
         onClick={onClick}
         array={quickAccess}
       />
-      <hr />
-      <p>Despesas:</p>
+      <HrElement />
+      <MainParagraph>Despesas:</MainParagraph>
       <div>
         {expenses.map(({ value, description, currency }, index) => (
-          <div key={index}>
-            <p>{`R$ ${Number(value).toFixed(2)}`}</p>
-            <p>{description}</p>
+          <ExpenseDiv key={index}>
+            <div>
+              <ExpenseValue>{`R$ ${Number(value).toFixed(2)}`}</ExpenseValue>
+              <p>{description}</p>
+            </div>
             <img style={{ maxWidth: '35px' }} src={images[currency]} alt="currency" />
-          </div>
+          </ExpenseDiv>
         ))}
       </div>
     </div>
