@@ -26,7 +26,6 @@ function Register({ dispatch, expenses }) {
   }, [fields]);
 
   const handleOnChange = ({ target: { name, value } }) => {
-    // console.log(value.length);
     setFields((prev) => ({ ...prev, [name]: value }));
   };
 
